@@ -15,4 +15,8 @@ public class Edge {
     public Line2d getLine(){
         return this.line;
     }
+
+    public double getAngle() {
+        return Math.atan2(this.v1.pos.y - this.v2.pos.y, this.v1.pos.x - this.v2.pos.x);
+    }
 }

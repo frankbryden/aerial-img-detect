@@ -1,6 +1,7 @@
 package uk.ac.soton.ecs.fjkb1u17.buildingDetection;
 
 import org.openimaj.image.DisplayUtilities;
+import org.openimaj.image.FImage;
 import org.openimaj.image.ImageUtilities;
 import org.openimaj.image.MBFImage;
 import org.openimaj.math.geometry.point.Point2dImpl;
@@ -25,7 +26,7 @@ public class BuildingMain {
             buildingSeeds.add(new Vertex(new Point2dImpl(587, 22)));
             buildingSeeds.add(new Vertex(new Point2dImpl(444, 253)));
 
-            SpokeDetection spokeDetection = new SpokeDetection(image.flatten(), buildingSeeds);
+            SpokeDetection spokeDetection = new SpokeDetection(image.flatten(), buildingSeeds, new FImage(100, 100));
             spokeDetection.process();
             MBFImage buildingRes = image.clone();
             spokeDetection.render(buildingRes);

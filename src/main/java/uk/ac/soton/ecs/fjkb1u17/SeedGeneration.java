@@ -4,12 +4,14 @@ import org.openimaj.image.DisplayUtilities;
 import org.openimaj.image.FImage;
 import org.openimaj.image.ImageUtilities;
 import org.openimaj.image.MBFImage;
+import org.openimaj.image.colour.ColourSpace;
 import org.openimaj.image.colour.RGBColour;
 import org.openimaj.image.colour.Transforms;
 import org.openimaj.image.processor.PixelProcessor;
 import org.openimaj.math.geometry.point.Point2dImpl;
 import org.openimaj.math.geometry.shape.Polygon;
 import org.openimaj.math.geometry.shape.RotatedRectangle;
+import uk.ac.soton.ecs.fjkb1u17.buildingDetection.SpokeDetection;
 
 import java.awt.color.ColorSpace;
 import java.io.File;
@@ -58,7 +60,7 @@ public class SeedGeneration {
 
         MBFImage clone = image.clone();
         this.seeds.forEach(seed -> clone.drawPoint(seed.toPoint2dImpl(), RGBColour.YELLOW, 8));
-        DisplayUtilities.display(clone, "Before network growth (" + seeds.size() + " seeds)");
+        //DisplayUtilities.display(clone, "Before network growth (" + seeds.size() + " seeds)");
 
         this.grow();
 
@@ -134,7 +136,7 @@ public class SeedGeneration {
         MBFImage clone = image.clone();
         removedSeeds.forEach(seed -> clone.drawPoint(seed.toPoint2dImpl(), RGBColour.CYAN, 8));
         removedMSD.forEach(seed -> clone.drawPoint(seed.toPoint2dImpl(), RGBColour.YELLOW, 8));
-        DisplayUtilities.display(clone, "Removed by network expansion (" + removedSeeds.size() + " seeds)");
+        //DisplayUtilities.display(clone, "Removed by network expansion (" + removedSeeds.size() + " seeds)");
 
     }
 
@@ -146,16 +148,46 @@ public class SeedGeneration {
         MBFImage cl = image.clone();
         rne.render(cl);
         DisplayUtilities.display(cl, "After filtering");
-        FImage output = rne.getRoadsBinaryImage();
+        FImage binaryRoads = rne.getRoadsBinaryImagePolys();
+
+        MBFImage withBuildingSeeds = image.clone();
+        MBFImage withBuildingFootprintsFiltered = image.clone();
+        MBFImage hsvImage = ColourSpace.convert(image.clone(), ColourSpace.H2SV);
+        FImage sat = hsvImage.getBand(1);
+        hsvImage = new MBFImage(sat, sat, sat);
+        DisplayUtilities.display(hsvImage, "HSV IMAGE");
+        List<Vertex> buildingSeeds = rne.possibleBuildingSeeds();
+        System.out.println("Found " + buildingSeeds.size() + " building seeds.");
+        SpokeDetection spokeDetection = new SpokeDetection(image.flatten(), buildingSeeds, binaryRoads);
+        spokeDetection.process();
+        spokeDetection.filterOnRoadSeeds();
+        spokeDetection.render(withBuildingFootprintsFiltered);
+        spokeDetection.render(hsvImage);
+
+
+        buildingSeeds.forEach(v -> withBuildingSeeds.drawPoint(v.pos, RGBColour.GREEN, 5));
+        DisplayUtilities.display(withBuildingSeeds, "Building seeds");
+        DisplayUtilities.display(withBuildingFootprintsFiltered, "Building footprints filtered");
+        DisplayUtilities.display(hsvImage, "Building footprints on saturation img");
+        FImage output = this.image.flatten();//rne.getRoadsBinaryImage();
+
+        /*
         try {
             ImageUtilities.write(output, new File("binaryRoadsUS.png"));
         } catch (IOException e) {
             e.printStackTrace();
+        }*/
+        DisplayUtilities.display(binaryRoads, "Output2");
+        List<FImage> withoutRoadsList = new ArrayList<>();
+        withoutRoadsList.add(binaryRoads);
+        int i = 0;
+        for (FImage img: withoutRoadsList){
+            MBFImage withoutRoads = image.clone();
+            withoutRoads.multiplyInplace(img.inverse());
+            DisplayUtilities.display(withoutRoads, "Without Roads - " + i);
+            i++;
         }
-        DisplayUtilities.display(output, "Output");
-        MBFImage withoutRoads = image.clone();
-        withoutRoads.multiplyInplace(output.inverse());
-        DisplayUtilities.display(withoutRoads, "Without Roads");
+
         System.out.println("Done.");
     }
 

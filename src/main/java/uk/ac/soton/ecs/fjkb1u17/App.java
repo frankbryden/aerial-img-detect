@@ -4,18 +4,23 @@ import org.openimaj.image.DisplayUtilities;
 import org.openimaj.image.FImage;
 import org.openimaj.image.ImageUtilities;
 import org.openimaj.image.MBFImage;
+import org.openimaj.image.colour.ColourSpace;
 import org.openimaj.image.colour.RGBColour;
 import org.openimaj.image.colour.Transforms;
 import org.openimaj.image.processor.PixelProcessor;
 import org.openimaj.math.geometry.point.Point2dImpl;
 import org.openimaj.math.geometry.shape.Polygon;
 import org.openimaj.math.statistics.distribution.MultivariateKernelDensityEstimate;
+import org.openimaj.ml.clustering.FloatCentroidsResult;
+import org.openimaj.ml.clustering.assignment.HardAssigner;
+import org.openimaj.ml.clustering.kmeans.FloatKMeans;
 import org.openimaj.ml.clustering.meanshift.ExactMeanShift;
 import org.w3c.dom.css.RGBColor;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -30,7 +35,7 @@ public class App {
         MBFImage image = null;
         try {
             image = ImageUtilities.readMBF(new File("easiestRoad.png"));
-            image = ImageUtilities.readMBF(new File("img3.png"));
+            image = ImageUtilities.readMBF(new File("img2.png"));
             //image = ImageUtilities.readMBF(new File("img3.png"));
             FImage filtered = new FImage(image.getWidth(), image.getHeight());
             FImage redBand = image.getBand(0);
@@ -43,9 +48,10 @@ public class App {
             SeedGeneration seedGeneration = new SeedGeneration(image);
             seedGeneration.run();
 
-
             MBFImage hsv = Transforms.RGB_TO_HSV(image);
-            DisplayUtilities.display(hsv.getBand(1), "Saturation");
+            for (int i = 0; i < 3; i++){
+                DisplayUtilities.display(hsv.getBand(i), "Band " + i);
+            }
 
 
             List<Point2dImpl> targetRoadSeeds = new ArrayList<>();
@@ -85,7 +91,6 @@ public class App {
                 rd.render(image);
             }
 
-            DisplayUtilities.display(image);
             ImageUtilities.write(image, new File("processed.png"));
         } catch (IOException e) {
             e.printStackTrace();

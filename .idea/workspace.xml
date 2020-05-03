@@ -1,8 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e55eb2c6-2460-4d29-beb1-6b79986e256d" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="e55eb2c6-2460-4d29-beb1-6b79986e256d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/aerial-img-detect.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/binaryRoadsUS.png" beforeDir="false" afterPath="$PROJECT_DIR$/binaryRoadsUS.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/distances" beforeDir="false" afterPath="$PROJECT_DIR$/distances" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processed.png" beforeDir="false" afterPath="$PROJECT_DIR$/processed.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/Edge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/RoadDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/RoadDetector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/RoadNetworkExtraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/RoadNetworkExtraction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/SeedGeneration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/SeedGeneration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/Vertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/Vertex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/buildingDetection/BuildingMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/buildingDetection/BuildingMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/buildingDetection/SpokeDetection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/buildingDetection/SpokeDetection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/App$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/App$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/Edge.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/Edge.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/HoughLineChessboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/HoughLineChessboard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/RoadDetector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/RoadDetector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/RoadNetworkExtraction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/RoadNetworkExtraction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/RoadTreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/RoadTreeNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/SeedGeneration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/SeedGeneration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/SpokeWheel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/SpokeWheel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/ToeFinding.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/ToeFinding.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/Vertex.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/Vertex.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/buildingDetection/BuildingMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/buildingDetection/BuildingMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/buildingDetection/SpokeDetection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/buildingDetection/SpokeDetection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/meanShift/MeanMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/meanShift/MeanMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/meanShift/MeanShift.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/meanShift/MeanShift.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,32 +65,36 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1UIGankuNMOnuE99Mp9jUtcsF0c" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../compv-cheat/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Application.HoughLineChessboard">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="uk.ac.soton.ecs.fjkb1u17.App" />
-      <module name="aerialImageDetection" />
-      <shortenClasspath name="CLASSPATH_FILE" />
+      <module name="aerial-img-detect" />
+      <shortenClasspath name="ARGS_FILE" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="uk.ac.soton.ecs.fjkb1u17.*" />
@@ -99,10 +153,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.App" />
+      <item itemvalue="Application.BuildingMain" />
+      <item itemvalue="Application.HoughLineChessboard" />
+      <item itemvalue="Application.MeanMain" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HoughLineChessboard" />
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.HoughLineChessboard" />
         <item itemvalue="Application.BuildingMain" />
         <item itemvalue="Application.MeanMain" />
       </list>
@@ -130,11 +190,80 @@
       <workItem from="1583753684566" duration="5029000" />
       <workItem from="1586458962194" duration="11377000" />
       <workItem from="1587825625956" duration="41467000" />
+      <workItem from="1588371248619" duration="640000" />
+      <workItem from="1588374528509" duration="985000" />
+      <workItem from="1588434672836" duration="1859000" />
+      <workItem from="1588439735331" duration="1458000" />
+      <workItem from="1588442229883" duration="10202000" />
+      <workItem from="1588519473976" duration="2140000" />
+      <workItem from="1588522926360" duration="2595000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="455" y="32" key="#App" timestamp="1588444153290">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="455" y="32" key="#App/0.0.1536.824@0.0.1536.824" timestamp="1588444153290" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588443286459">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1588443286459" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588521067028">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588521067028" />
+    <state x="577" y="167" key="FileChooserDialogImpl" timestamp="1588443133531">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="577" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588443133531" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1588525143266">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588525143266" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1588525143266">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588525143266" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1588525143265">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588525143265" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1588525143266">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588525143266" />
+    <state x="277" y="0" key="SettingsEditor" timestamp="1588443142513">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588443142513" />
+    <state x="478" y="11" width="579" height="801" key="find.popup" timestamp="1588521651931">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="478" y="11" width="579" height="801" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1588521651931" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1588375459201">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1588375459201" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1588459729541">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1588459729541" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -161,5 +290,10 @@
         <watch expression="regionSequence.get(47)" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/aerial_img_detect$App.ic" NAME="App Coverage Results" MODIFIED="1588457842799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>uk.ac.soton.ecs.fjkb1u17.*</FILTER>
+    </SUITE>
   </component>
 </project>

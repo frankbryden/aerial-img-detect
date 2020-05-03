@@ -81,7 +81,7 @@ public class RoadDetector {
         RotatedRectangle mobb = p.minimumBoundingRectangle();
         double mobbArea = mobb.calculateArea();
         if (polygonArea/mobbArea <= 0.70){
-            System.out.println("Not rectangular as less than 85% of the inner area fills the rectangle -> " + (polygonArea/mobbArea));
+            //System.out.println("Not rectangular as less than 85% of the inner area fills the rectangle -> " + (polygonArea/mobbArea));
             return false;
         }
 

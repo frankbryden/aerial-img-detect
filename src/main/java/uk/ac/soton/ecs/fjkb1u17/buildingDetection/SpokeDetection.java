@@ -1,6 +1,7 @@
 package uk.ac.soton.ecs.fjkb1u17.buildingDetection;
 
 import org.openimaj.image.MBFImage;
+import org.openimaj.math.geometry.point.Point2d;
 import uk.ac.soton.ecs.fjkb1u17.SpokeWheel;
 
 import org.openimaj.image.FImage;
@@ -12,6 +13,7 @@ import uk.ac.soton.ecs.fjkb1u17.ToeFinding;
 import uk.ac.soton.ecs.fjkb1u17.Vertex;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -19,16 +21,19 @@ public class SpokeDetection {
     public static final int SPOKE_COUNT = 64;
     public static final int SPOKE_RADIUS = 20;
     private FImage target;
-    private List<List<Point2dImpl>> cutOffPointsList = new ArrayList<>();
     private List<List<Point2dImpl>> peakPointsList = new ArrayList<>();
     private List<Polygon> cutOffShapes = new ArrayList<>();
     private List<Vertex> buildingSeeds;
     private List<SpokeWheel> spokeWheels = new ArrayList<>();
+    private List<Polygon> roadPolys = new ArrayList<>(); //Keep track of detected roads
+                                                        // Will be needed later to remove FP buildings which lie on roads
+    private FImage binaryRoads; //Used as a map to determine if a point is on a road or not.
     private boolean spawnedRandomly = false;
 
-    public SpokeDetection(FImage target, List<Vertex> buildingSeeds){
+    public SpokeDetection(FImage target, List<Vertex> buildingSeeds, FImage binaryRoads){
         this.target = target;
         this.buildingSeeds = buildingSeeds;
+        this.binaryRoads = binaryRoads;
     }
 
     private void spawnRoadSeeds(int count){
@@ -51,12 +56,28 @@ public class SpokeDetection {
             Polygon shape = new Polygon(cutOffPoints);
             if (spawnedRandomly){ //if seeds were random, then only add rectangular road sections to the list of detected points and shapes
                 if (isRectangular(shape) || true){
-                    cutOffPointsList.add(cutOffPoints);
                     cutOffShapes.add(shape);
                 }
             } else {
-                cutOffPointsList.add(cutOffPoints);
                 cutOffShapes.add(shape);
+            }
+        }
+    }
+
+    //TODO make private and add to process
+    public void filterOnRoadSeeds() {
+        Iterator<Polygon> iter = this.cutOffShapes.iterator();
+        while (iter.hasNext()){
+            Polygon poly = iter.next();
+            for (Point2d point: poly.points){
+                int x = (int) point.getX();
+                int y = (int) point.getY();
+                if (x >= 0 && x < binaryRoads.width && y >= 0 && y < binaryRoads.height){
+                    if (binaryRoads.getPixel((int) point.getX(), (int) point.getY()) == 1f){
+                        iter.remove();
+                        break;
+                    }
+                }
             }
         }
     }
@@ -70,7 +91,7 @@ public class SpokeDetection {
         RotatedRectangle mobb = p.minimumBoundingRectangle();
         double mobbArea = mobb.calculateArea();
         if (polygonArea/mobbArea <= 0.70){
-            System.out.println("Not rectangular as less than 85% of the inner area fills the rectangle -> " + (polygonArea/mobbArea));
+            //System.out.println("Not rectangular as less than 85% of the inner area fills the rectangle -> " + (polygonArea/mobbArea));
             return false;
         }
 
@@ -86,10 +107,10 @@ public class SpokeDetection {
             image.drawPoint(s.getP(), RGBColour.MAGENTA, 5);
             s.render(image);
         });*/
-        System.out.println("Rendering road detection with " + this.buildingSeeds.get(0).getPos() + " seeds");
+        System.out.println("Rendering building detection with " + this.buildingSeeds.get(0).getPos() + " seeds");
         image.drawPoint(this.buildingSeeds.get(0).getPos(), RGBColour.MAGENTA, 5);
-        for (int i = 0; i < cutOffPointsList.size(); i++){
-            image.drawPoints(cutOffPointsList.get(i), RGBColour.GREEN, 2);
+        for (int i = 0; i < cutOffShapes.size(); i++){
+            System.out.printf("cur %d, len %d\n", i, cutOffShapes.size());
             Float[] shapeCol;
             if (this.isRectangular(cutOffShapes.get(i))){
                 shapeCol = RGBColour.GREEN;
@@ -104,12 +125,9 @@ public class SpokeDetection {
 
     }
 
+
     public List<List<Point2dImpl>> getToes(){
         return this.peakPointsList;
-    }
-
-    public List<List<Point2dImpl>> getCutOffPoints(){
-        return this.cutOffPointsList;
     }
 
     private boolean withinTarget(Point2dImpl p){

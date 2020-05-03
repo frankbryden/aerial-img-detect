@@ -10,6 +10,10 @@ public class Vertex {
         this.pos = pos;
     }
 
+    public Vertex (int x, int y){
+        this.pos = new Point2dImpl(x, y);
+    }
+
     public Point2dImpl getPos(){
         return this.pos;
     }

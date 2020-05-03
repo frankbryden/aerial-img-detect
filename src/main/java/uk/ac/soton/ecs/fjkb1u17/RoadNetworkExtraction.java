@@ -1,7 +1,5 @@
 package uk.ac.soton.ecs.fjkb1u17;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import javafx.scene.paint.Color;
 import org.openimaj.image.DisplayUtilities;
 import org.openimaj.image.FImage;
 import org.openimaj.image.MBFImage;
@@ -16,6 +14,7 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class RoadNetworkExtraction {
+    private final int BUILDING_DIST = 40; //Distance of houses from road, in pixels
     private MBFImage target;
     private FImage flattened, hue, saturation;
     private List<Point2dImpl> roadCandidates;
@@ -221,6 +220,23 @@ public class RoadNetworkExtraction {
         return totalDistance/this.tree.vertices.size();
     }
 
+    public List<Vertex> possibleBuildingSeeds(){
+        List<Vertex> buildingSeeds = new ArrayList<>();
+        for (Edge edge: this.tree.edges){
+            double angle = edge.getAngle();
+            Vertex b1Seed = getBuildingSeed(edge.v1, angle + Math.PI/2);
+            Vertex b2Seed = getBuildingSeed(edge.v1, angle - Math.PI/2);
+            buildingSeeds.add(b1Seed);
+            buildingSeeds.add(b2Seed);
+        }
+        return buildingSeeds;
+    }
+
+    private Vertex getBuildingSeed(Vertex start, double angle){
+        return new Vertex((int) (start.pos.x + Math.cos(angle)*BUILDING_DIST),
+                (int) (start.pos.y + Math.sin(angle)*BUILDING_DIST));
+    }
+
     public FImage getRoadsBinaryImage(){
         //Returns a binary image where 1 is a road and 0 is off-road
         long start = System.currentTimeMillis();
@@ -236,6 +252,22 @@ public class RoadNetworkExtraction {
         }
         System.out.println("Took " + (System.currentTimeMillis() - start)/1000 + "s to compute image");
         return output;
+    }
+
+    public FImage getRoadsBinaryImagePolys(){
+        long start = System.currentTimeMillis();
+        FImage output = new FImage(this.target.getWidth(), this.target.getHeight());
+        for (Polygon poly: this.footprints){
+            output.drawPolygonFilled(poly, 1f);
+        }
+        System.out.println("Took " + (System.currentTimeMillis() - start) + "s to compute image using fill polys");
+        return output;
+    }
+
+    public Polygon getRoadsAsPoly(){
+        Polygon wholeRoad = this.footprints.get(0).clone();
+        this.footprints.subList(1, this.footprints.size()).forEach(wholeRoad::addInnerPolygon);
+        return wholeRoad;
     }
 
     private boolean inBounds(Vertex v){
