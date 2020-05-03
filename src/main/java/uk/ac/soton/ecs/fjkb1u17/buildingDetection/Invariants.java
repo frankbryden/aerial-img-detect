@@ -26,4 +26,12 @@ public class Invariants {
     public FImage blueInvariant(){
         return createInvariant(image.getBand(2), image.getBand(1));
     }
+
+    public FImage greenInvariant() {
+        return createInvariant(image.getBand(1), image.getBand(0));
+    }
+
+    public FImage greenInvariantB() {
+        return createInvariant(image.getBand(1), image.getBand(2));
+    }
 }

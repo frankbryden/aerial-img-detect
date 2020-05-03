@@ -1,7 +1,13 @@
 package uk.ac.soton.ecs.fjkb1u17.buildingDetection;
 
+import org.openimaj.image.DisplayUtilities;
 import org.openimaj.image.MBFImage;
+import org.openimaj.image.renderer.RenderHints;
+import org.openimaj.image.typography.FontStyle;
+import org.openimaj.image.typography.general.GeneralFont;
 import org.openimaj.math.geometry.point.Point2d;
+import org.openimaj.math.geometry.shape.Rectangle;
+import org.openjena.atlas.iterator.Iter;
 import uk.ac.soton.ecs.fjkb1u17.SpokeWheel;
 
 import org.openimaj.image.FImage;
@@ -12,15 +18,19 @@ import org.openimaj.math.geometry.shape.RotatedRectangle;
 import uk.ac.soton.ecs.fjkb1u17.ToeFinding;
 import uk.ac.soton.ecs.fjkb1u17.Vertex;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class SpokeDetection {
     public static final int SPOKE_COUNT = 64;
     public static final int SPOKE_RADIUS = 20;
-    private FImage target;
+    private static final int MIN_BUILDING_AREA = 300;
+    private static final float MIN_BUILDING_SATURATION = 0.6f;
+    private final FImage target;
     private List<List<Point2dImpl>> peakPointsList = new ArrayList<>();
     private List<Polygon> cutOffShapes = new ArrayList<>();
     private List<Vertex> buildingSeeds;
@@ -66,9 +76,17 @@ public class SpokeDetection {
 
     //TODO make private and add to process
     public void filterOnRoadSeeds() {
+        int areaRemovalCount = 0;
+        List<Polygon> removedBuildings = new ArrayList<>();
         Iterator<Polygon> iter = this.cutOffShapes.iterator();
         while (iter.hasNext()){
             Polygon poly = iter.next();
+            if (poly.minimumBoundingRectangle().calculateArea() < MIN_BUILDING_AREA){
+                removedBuildings.add(poly);
+                iter.remove();
+                areaRemovalCount++;
+                continue;
+            }
             for (Point2d point: poly.points){
                 int x = (int) point.getX();
                 int y = (int) point.getY();
@@ -80,6 +98,25 @@ public class SpokeDetection {
                 }
             }
         }
+        FImage removedBuildingsImg = target.clone();
+        removedBuildings.forEach(p -> removedBuildingsImg.drawPolygon(p, 1f));
+        DisplayUtilities.display(removedBuildingsImg, "Buildings removed based on MOBB area");
+        System.out.println("Removed " + areaRemovalCount + " buildings by looking at MOBB area.");
+    }
+
+    public List<Polygon> filterSaturation(FImage saturation){
+        //Filter out buildings above a certain mean saturation
+        List<Polygon> removedFromSat = new ArrayList<>();
+        Iterator<Polygon> iter = cutOffShapes.iterator();
+        while (iter.hasNext()){
+            Polygon poly = iter.next();
+            if (meanSaturation(saturation, getContainingPoints(poly)) > MIN_BUILDING_SATURATION){
+                iter.remove();
+                removedFromSat.add(poly);
+            }
+
+        }
+        return removedFromSat;
     }
 
     private boolean isRectangular(Polygon p){
@@ -107,22 +144,66 @@ public class SpokeDetection {
             image.drawPoint(s.getP(), RGBColour.MAGENTA, 5);
             s.render(image);
         });*/
+        final FontStyle<Float[]> gfs = new GeneralFont("Aerial", Font.PLAIN).createStyle(image.createRenderer(RenderHints.ANTI_ALIASED));
+
+        gfs.setFontSize(16);
+        gfs.setHorizontalAlignment(FontStyle.HorizontalAlignment.HORIZONTAL_CENTER);
         System.out.println("Rendering building detection with " + this.buildingSeeds.get(0).getPos() + " seeds");
         image.drawPoint(this.buildingSeeds.get(0).getPos(), RGBColour.MAGENTA, 5);
         for (int i = 0; i < cutOffShapes.size(); i++){
-            System.out.printf("cur %d, len %d\n", i, cutOffShapes.size());
             Float[] shapeCol;
-            if (this.isRectangular(cutOffShapes.get(i))){
+            Polygon poly = cutOffShapes.get(i);
+            if (this.isRectangular(poly)){
                 shapeCol = RGBColour.GREEN;
             } else {
                 shapeCol = RGBColour.RED;
             }
-            image.drawPolygon(cutOffShapes.get(i), shapeCol);
+            image.drawPolygon(poly, shapeCol);
+            /*if (i % 5 == 0){
+                Rectangle polyRect = poly.calculateRegularBoundingBox();
+                image.drawText(String.format("%2f", getMOBBRatio(poly)*100), (int) (polyRect.x + polyRect.width/2)
+                        , (int) (polyRect.y + polyRect.height/2), gfs);
+            }*/
+
             //image.drawPoints(peakPointsList.get(i), RGBColour.YELLOW, 2);
             //image.drawShape(new Circle(roadSeeds.get(i).x, roadSeeds.get(i).y, SPOKE_RADIUS), 1, RGBColour.CYAN);
             //image.drawShape(cutOffShapes.get(i).minimumBoundingRectangle(), shapeCol);
         }
 
+    }
+
+    private double getMOBBRatio(Polygon p){
+        double polygonArea = p.calculateArea();
+        RotatedRectangle mobb = p.minimumBoundingRectangle();
+        double mobbArea = mobb.calculateArea();
+        return polygonArea/mobbArea;
+    }
+
+    public List<Point2dImpl> getContainingPoints(Polygon poly){
+        List<Point2dImpl> points = new ArrayList<>();
+        Rectangle rect = poly.calculateRegularBoundingBox();
+        for (int x = (int) poly.minX(); x < poly.maxX(); x++){
+            for (int y = (int) poly.minY(); y < poly.maxY(); y++){
+                Point2dImpl point = new Point2dImpl(x, y);
+                if (poly.isInside(point)){
+                    points.add(point);
+                }
+            }
+        }
+        return points;
+    }
+
+    private float meanSaturation(FImage saturation, List<Point2dImpl> points){
+        double totalSat = 0;
+        for (Point2dImpl point: points){
+            try {
+                totalSat += saturation.getPixel((int) point.x, (int) point.y);
+            } catch (ArrayIndexOutOfBoundsException e){
+
+            }
+
+        }
+        return (float) totalSat/points.size();
     }
 
 

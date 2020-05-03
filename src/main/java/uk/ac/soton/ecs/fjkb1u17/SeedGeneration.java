@@ -152,23 +152,24 @@ public class SeedGeneration {
 
         MBFImage withBuildingSeeds = image.clone();
         MBFImage withBuildingFootprintsFiltered = image.clone();
+        MBFImage removedBuildingsFromSat = image.clone();
         MBFImage hsvImage = ColourSpace.convert(image.clone(), ColourSpace.H2SV);
         FImage sat = hsvImage.getBand(1);
-        hsvImage = new MBFImage(sat, sat, sat);
-        DisplayUtilities.display(hsvImage, "HSV IMAGE");
         List<Vertex> buildingSeeds = rne.possibleBuildingSeeds();
         System.out.println("Found " + buildingSeeds.size() + " building seeds.");
         SpokeDetection spokeDetection = new SpokeDetection(image.flatten(), buildingSeeds, binaryRoads);
         spokeDetection.process();
         spokeDetection.filterOnRoadSeeds();
+        List<Polygon> removedPolygons = spokeDetection.filterSaturation(sat);
         spokeDetection.render(withBuildingFootprintsFiltered);
-        spokeDetection.render(hsvImage);
 
 
+        removedPolygons.forEach(p -> removedBuildingsFromSat.drawPolygon(p, RGBColour.GREEN));
         buildingSeeds.forEach(v -> withBuildingSeeds.drawPoint(v.pos, RGBColour.GREEN, 5));
         DisplayUtilities.display(withBuildingSeeds, "Building seeds");
         DisplayUtilities.display(withBuildingFootprintsFiltered, "Building footprints filtered");
         DisplayUtilities.display(hsvImage, "Building footprints on saturation img");
+        DisplayUtilities.display(removedBuildingsFromSat, "Building footprints removed based on saturation");
         FImage output = this.image.flatten();//rne.getRoadsBinaryImage();
 
         /*

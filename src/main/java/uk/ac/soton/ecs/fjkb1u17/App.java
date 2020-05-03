@@ -16,6 +16,7 @@ import org.openimaj.ml.clustering.assignment.HardAssigner;
 import org.openimaj.ml.clustering.kmeans.FloatKMeans;
 import org.openimaj.ml.clustering.meanshift.ExactMeanShift;
 import org.w3c.dom.css.RGBColor;
+import uk.ac.soton.ecs.fjkb1u17.buildingDetection.Invariants;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,7 +36,7 @@ public class App {
         MBFImage image = null;
         try {
             image = ImageUtilities.readMBF(new File("easiestRoad.png"));
-            image = ImageUtilities.readMBF(new File("img2.png"));
+            image = ImageUtilities.readMBF(new File("tijuanaMexico.png"));
             //image = ImageUtilities.readMBF(new File("img3.png"));
             FImage filtered = new FImage(image.getWidth(), image.getHeight());
             FImage redBand = image.getBand(0);
@@ -48,10 +49,16 @@ public class App {
             SeedGeneration seedGeneration = new SeedGeneration(image);
             seedGeneration.run();
 
-            MBFImage hsv = Transforms.RGB_TO_HSV(image);
+            /*MBFImage hsv = Transforms.RGB_TO_HSV(image);
             for (int i = 0; i < 3; i++){
                 DisplayUtilities.display(hsv.getBand(i), "Band " + i);
             }
+            Invariants invariants = new Invariants(image.clone());
+            FImage greenInvariant = invariants.greenInvariant();
+            FImage greenInvariantB = invariants.greenInvariantB();
+            DisplayUtilities.display(greenInvariant, "Green invariant");
+            DisplayUtilities.display(greenInvariantB, "Green invariant with BLue");
+            DisplayUtilities.display(image.getBand(1), "Green band");*/
 
 
             List<Point2dImpl> targetRoadSeeds = new ArrayList<>();
