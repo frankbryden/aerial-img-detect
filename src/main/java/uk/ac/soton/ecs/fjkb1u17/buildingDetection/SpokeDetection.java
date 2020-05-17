@@ -74,7 +74,6 @@ public class SpokeDetection {
         }
     }
 
-    //TODO make private and add to process
     public void filterOnRoadSeeds() {
         int areaRemovalCount = 0;
         List<Polygon> removedBuildings = new ArrayList<>();
@@ -99,6 +98,40 @@ public class SpokeDetection {
             }
         }
         System.out.println("Removed " + areaRemovalCount + " buildings by looking at MOBB area.");
+    }
+
+    public List<Polygon> filterGreenInvariant(FImage greenInvariant){
+        final float GREEN_THRESH = 0.05f;
+        Iterator<Polygon> iter = this.cutOffShapes.iterator();
+        List<Polygon> removedBuildings = new ArrayList<>();
+        List<Float> means = new ArrayList<>();
+        while(iter.hasNext()){
+            Polygon building = iter.next();
+            float mean = meanValue(greenInvariant, getContainingPoints(building));
+            means.add(mean);
+            if (mean > GREEN_THRESH){
+                removedBuildings.add(building);
+                iter.remove();
+            }
+        }
+        means = means.stream().sorted().collect(Collectors.toList());
+        System.out.println(means);
+        System.out.println("Removed " + removedBuildings.size() + " buildings");
+        return removedBuildings;
+    }
+
+    public float meanValue(FImage map, List<Point2dImpl> points){
+        float total = 0f;
+        for (Point2dImpl p: points){
+            int x = (int) p.x;
+            int y = (int) p.y;
+            if (x >= 0 && y >= 0 && x < map.width && y < map.height){
+                total += map.getPixel(x, y);
+            }
+
+        }
+
+        return total/points.size();
     }
 
     public List<Polygon> filterSaturation(FImage saturation){
