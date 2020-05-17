@@ -98,9 +98,6 @@ public class SpokeDetection {
                 }
             }
         }
-        FImage removedBuildingsImg = target.clone();
-        removedBuildings.forEach(p -> removedBuildingsImg.drawPolygon(p, 1f));
-        DisplayUtilities.display(removedBuildingsImg, "Buildings removed based on MOBB area");
         System.out.println("Removed " + areaRemovalCount + " buildings by looking at MOBB area.");
     }
 

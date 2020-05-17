@@ -44,7 +44,7 @@ public class App {
         try {
             image = ImageUtilities.readMBF(new File("easiestRoad.png"));
             //image = ImageUtilities.readMBF(new File("img3.png"));
-            image = ImageUtilities.readMBF(new File("field.png"));
+            image = ImageUtilities.readMBF(new File("LA.png"));
             FImage filtered = new FImage(image.getWidth(), image.getHeight());
             FImage redBand = image.getBand(0);
             FImage greenBand = image.getBand(1);
@@ -69,9 +69,6 @@ public class App {
             DisplayUtilities.display(greenInvariant, "Green invariant");
             DisplayUtilities.display(greenInvariantB, "Green invariant with BLue");
             DisplayUtilities.display(image.getBand(1), "Green band");*/
-            Invariants invariants = new Invariants(image.clone());
-            FImage redInvariant = invariants.redInvariant();
-            DisplayUtilities.display(redInvariant, "Red invariant");
 
 
             List<Point2dImpl> targetRoadSeeds = new ArrayList<>();

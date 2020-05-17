@@ -97,8 +97,7 @@ public class RoadDetector {
             image.drawPoint(s.getP(), RGBColour.MAGENTA, 5);
             s.render(image);
         });
-        System.out.println("Rendering road detection with " + this.roadSeeds.get(0).pos + " seeds");
-        image.drawPoint(this.roadSeeds.get(0).pos, RGBColour.MAGENTA, 5);
+        //System.out.println("Rendering road detection with " + this.roadSeeds.get(0).pos + " seeds");
         for (int i = 0; i < cutOffPointsList.size(); i++){
             image.drawPoints(cutOffPointsList.get(i), RGBColour.GREEN, 2);
             Float[] shapeCol;
