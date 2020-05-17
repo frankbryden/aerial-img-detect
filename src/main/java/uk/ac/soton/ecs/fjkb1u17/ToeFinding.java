@@ -26,17 +26,6 @@ public class ToeFinding {
 
     private void init(){
         this.initDistances();
-        File file = new File("distances");
-        try {
-            PrintWriter pw = new PrintWriter(file);
-            for (Double distance : distances){
-                pw.println(distance);
-            }
-            pw.flush();
-            pw.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
         this.initDeltaFunction();
         this.peakIndices = new ArrayList<>();
     }
