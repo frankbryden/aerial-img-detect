@@ -25,10 +25,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e55eb2c6-2460-4d29-beb1-6b79986e256d" name="Default Changelist" comment="Good start on building detection.">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/filesAgreed" beforeDir="false" afterPath="$PROJECT_DIR$/filesAgreed" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/ToeFinding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/ToeFinding.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +179,7 @@
       <workItem from="1589294921088" duration="8996000" />
       <workItem from="1589510597043" duration="2086000" />
       <workItem from="1589643793173" duration="3125000" />
-      <workItem from="1589726699865" duration="7761000" />
+      <workItem from="1589726699865" duration="10238000" />
     </task>
     <task id="LOCAL-00001" summary="Good start on building detection.">
       <created>1588525565442</created>
