@@ -11,6 +11,7 @@ import org.openimaj.image.processor.PixelProcessor;
 import org.openimaj.math.geometry.point.Point2dImpl;
 import org.openimaj.math.geometry.shape.Polygon;
 import org.openimaj.math.geometry.shape.RotatedRectangle;
+import uk.ac.soton.ecs.fjkb1u17.buildingDetection.Invariants;
 import uk.ac.soton.ecs.fjkb1u17.buildingDetection.SpokeDetection;
 
 import java.awt.color.ColorSpace;
@@ -158,6 +159,12 @@ public class SeedGeneration {
         SpokeDetection spokeDetection = new SpokeDetection(image.flatten(), buildingSeeds, binaryRoads);
         spokeDetection.process();
         spokeDetection.filterOnRoadSeeds();
+
+        Invariants inv = new Invariants(image.clone());
+        List<Polygon> removedBuildingsGreen = spokeDetection.filterGreenInvariant(inv.greenInvariant());
+        MBFImage withRemovedGreen = image.clone();
+        removedBuildingsGreen.forEach(p -> withRemovedGreen.drawPolygon(p, RGBColour.MAGENTA));
+        DisplayUtilities.display(withRemovedGreen, "Buildings removed from green ");
         spokeDetection.render(withBuildingFootprintsFiltered);
 
 

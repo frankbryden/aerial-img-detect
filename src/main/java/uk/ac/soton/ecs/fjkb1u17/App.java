@@ -1,5 +1,6 @@
 package uk.ac.soton.ecs.fjkb1u17;
 
+import org.openimaj.image.DisplayUtilities;
 import org.openimaj.image.FImage;
 import org.openimaj.image.ImageUtilities;
 import org.openimaj.image.MBFImage;
@@ -7,6 +8,7 @@ import org.openimaj.image.processing.edges.CannyEdgeDetector;
 import org.openimaj.image.processor.PixelProcessor;
 import org.openimaj.math.geometry.point.Point2dImpl;
 import org.openimaj.math.geometry.shape.Polygon;
+import uk.ac.soton.ecs.fjkb1u17.buildingDetection.Invariants;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +27,7 @@ public class App {
         try {
             image = ImageUtilities.readMBF(new File("easiestRoad.png"));
             //image = ImageUtilities.readMBF(new File("img3.png"));
-            image = ImageUtilities.readMBF(new File("edmontonAB2.png"));
+            image = ImageUtilities.readMBF(new File("oslo.png"));
             FImage filtered = new FImage(image.getWidth(), image.getHeight());
             FImage redBand = image.getBand(0);
             FImage greenBand = image.getBand(1);
@@ -45,11 +47,10 @@ public class App {
             /*MBFImage hsv = Transforms.RGB_TO_HSV(image);
             for (int i = 0; i < 3; i++){
                 DisplayUtilities.display(hsv.getBand(i), "Band " + i);
-            }
-            FImage greenInvariantB = invariants.greenInvariantB();
+            }*/
+            Invariants invariants = new Invariants(image.clone());
+            FImage greenInvariant = invariants.greenInvariant();
             DisplayUtilities.display(greenInvariant, "Green invariant");
-            DisplayUtilities.display(greenInvariantB, "Green invariant with BLue");
-            DisplayUtilities.display(image.getBand(1), "Green band");*/
 
 
             List<Point2dImpl> targetRoadSeeds = new ArrayList<>();
