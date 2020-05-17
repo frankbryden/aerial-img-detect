@@ -91,7 +91,7 @@ public class ToeFinding {
         return distances.get(i) + distanceShift;
     }
 
-    private void findAllPeaks(){
+    private void    findAllPeaks(){
         for (int i = 0; i < distances.size(); i++){
             // i is a peak if it is larger than (i - 1) and (i + 1)
             if (delta(i) > delta((i + 1) % distances.size()) && delta(i) > delta((i - 1 + distances.size()) % distances.size())){

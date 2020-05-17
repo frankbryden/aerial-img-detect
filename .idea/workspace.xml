@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="aerial-img-detect:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,13 +25,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e55eb2c6-2460-4d29-beb1-6b79986e256d" name="Default Changelist" comment="Good start on building detection.">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/aerial_img_detect_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/distances" beforeDir="false" afterPath="$PROJECT_DIR$/distances" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/processed.png" beforeDir="false" afterPath="$PROJECT_DIR$/processed.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/SeedGeneration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/SeedGeneration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/buildingDetection/Invariants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/buildingDetection/Invariants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/ToeFinding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/ToeFinding.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/buildingDetection/SpokeDetection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/uk/ac/soton/ecs/fjkb1u17/buildingDetection/SpokeDetection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/App$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/App$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/SeedGeneration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/SeedGeneration.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/buildingDetection/SpokeDetection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/uk/ac/soton/ecs/fjkb1u17/buildingDetection/SpokeDetection.class" afterDir="false" />
     </list>
@@ -56,12 +65,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/META-INF" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="SDKs" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
@@ -177,6 +186,11 @@
       <workItem from="1588526048966" duration="127000" />
       <workItem from="1588526190897" duration="3452000" />
       <workItem from="1588531117290" duration="7505000" />
+      <workItem from="1588715316892" duration="173000" />
+      <workItem from="1589294921088" duration="8996000" />
+      <workItem from="1589510597043" duration="2086000" />
+      <workItem from="1589643793173" duration="3125000" />
+      <workItem from="1589726699865" duration="2264000" />
     </task>
     <task id="LOCAL-00001" summary="Good start on building detection.">
       <created>1588525565442</created>
@@ -212,38 +226,66 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="455" y="32" key="#App/0.0.1536.824@0.0.1536.824" timestamp="1588444153290" />
+    <state x="249" y="0" key="#Project_Structure" timestamp="1589728354273">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1589728354273" />
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588443286459">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1588443286459" />
+    <state x="527" y="203" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1589728687652">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="527" y="203" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1589728687652" />
+    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1589510607790">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1589510607790" />
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588521067028">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588521067028" />
-    <state x="577" y="167" key="FileChooserDialogImpl" timestamp="1588443133531">
+    <state x="577" y="167" key="FileChooserDialogImpl" timestamp="1589728330939">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="577" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588443133531" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1588541137939">
+    <state x="577" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589728330939" />
+    <state width="746" height="210" key="GridCell.Tab.0.bottom" timestamp="1589726969556">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588541137939" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1588541137939">
+    <state width="746" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589726969556" />
+    <state width="746" height="210" key="GridCell.Tab.0.center" timestamp="1589726969555">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588541137939" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1588541137939">
+    <state width="746" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589726969555" />
+    <state width="746" height="210" key="GridCell.Tab.0.left" timestamp="1589726969553">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588541137939" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1588541137939">
+    <state width="746" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589726969553" />
+    <state width="746" height="210" key="GridCell.Tab.0.right" timestamp="1589726969555">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588541137939" />
-    <state x="277" y="0" key="SettingsEditor" timestamp="1588526172987">
+    <state width="746" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589726969555" />
+    <state width="746" height="261" key="GridCell.Tab.1.bottom" timestamp="1589671821336">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588526172987" />
+    <state width="746" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589671821336" />
+    <state width="746" height="261" key="GridCell.Tab.1.center" timestamp="1589671821336">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="746" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1589671821336" />
+    <state width="746" height="261" key="GridCell.Tab.1.left" timestamp="1589671821336">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="746" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1589671821336" />
+    <state width="746" height="261" key="GridCell.Tab.1.right" timestamp="1589671821336">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="746" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1589671821336" />
+    <state x="277" y="0" key="SettingsEditor" timestamp="1589728694663">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1589728694663" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1588525598525">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -252,6 +294,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="478" y="11" width="579" height="801" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1588531286709" />
+    <state x="407" y="33" key="new project wizard" timestamp="1588715488745">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="407" y="33" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1588715488745" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1588375459201">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

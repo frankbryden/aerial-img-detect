@@ -47,7 +47,10 @@ public class SeedGeneration {
         System.out.println("After threshold test, " + (startingPointCount - this.seeds.size()) + " seeds removed. "
                 + this.seeds.size() + " seeds remaining.");
         startingPointCount = this.seeds.size();
+        MBFImage clone = image.clone();
+        this.seeds.forEach(seed -> clone.drawPoint(seed.toPoint2dImpl(), RGBColour.YELLOW, 8));
 
+        DisplayUtilities.display(clone, "Before rectangularity  test (" + seeds.size() + " seeds)");
         this.rectangularityTest();
         System.out.println("After rectangularity test, " + (startingPointCount - this.seeds.size()) + " seeds removed. "
                 + this.seeds.size() + " seeds remaining.");
@@ -58,9 +61,6 @@ public class SeedGeneration {
                 + this.seeds.size() + " seeds remaining.");
         startingPointCount = this.seeds.size();
 
-        MBFImage clone = image.clone();
-        this.seeds.forEach(seed -> clone.drawPoint(seed.toPoint2dImpl(), RGBColour.YELLOW, 8));
-        //DisplayUtilities.display(clone, "Before network growth (" + seeds.size() + " seeds)");
 
         this.grow();
 

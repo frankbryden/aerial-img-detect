@@ -148,8 +148,6 @@ public class SpokeDetection {
 
         gfs.setFontSize(16);
         gfs.setHorizontalAlignment(FontStyle.HorizontalAlignment.HORIZONTAL_CENTER);
-        System.out.println("Rendering building detection with " + this.buildingSeeds.get(0).getPos() + " seeds");
-        image.drawPoint(this.buildingSeeds.get(0).getPos(), RGBColour.MAGENTA, 5);
         for (int i = 0; i < cutOffShapes.size(); i++){
             Float[] shapeCol;
             Polygon poly = cutOffShapes.get(i);
