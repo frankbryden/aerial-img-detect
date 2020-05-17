@@ -1,31 +1,17 @@
 package uk.ac.soton.ecs.fjkb1u17;
 
-import org.jfree.chart.plot.dial.DialPlot;
-import org.openimaj.image.DisplayUtilities;
 import org.openimaj.image.FImage;
 import org.openimaj.image.ImageUtilities;
 import org.openimaj.image.MBFImage;
-import org.openimaj.image.colour.ColourSpace;
-import org.openimaj.image.colour.RGBColour;
-import org.openimaj.image.colour.Transforms;
 import org.openimaj.image.processing.edges.CannyEdgeDetector;
 import org.openimaj.image.processor.PixelProcessor;
 import org.openimaj.math.geometry.point.Point2dImpl;
 import org.openimaj.math.geometry.shape.Polygon;
-import org.openimaj.math.statistics.distribution.MultivariateKernelDensityEstimate;
-import org.openimaj.ml.clustering.FloatCentroidsResult;
-import org.openimaj.ml.clustering.assignment.HardAssigner;
-import org.openimaj.ml.clustering.kmeans.FloatKMeans;
-import org.openimaj.ml.clustering.meanshift.ExactMeanShift;
-import org.w3c.dom.css.RGBColor;
-import uk.ac.soton.ecs.fjkb1u17.buildingDetection.Invariants;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 /**
@@ -36,15 +22,10 @@ public class App {
     public static void main( String[] args ) {
     	//Create an image
         MBFImage image = null;
-        System.out.println(Arrays.toString(args));
-        System.out.println("Starting with 5000 seeds.");
-        System.out.println("After threshold test, 2167 seeds were removed. 2833 seeds remaining.");
-        System.out.println("After rectangularity test, 2610 seeds were removed. 223 seeds remaining.");
-        System.out.println("After network expansion test, 19 seeds removed. 204 seeds remaining.");
         try {
             image = ImageUtilities.readMBF(new File("easiestRoad.png"));
             //image = ImageUtilities.readMBF(new File("img3.png"));
-            image = ImageUtilities.readMBF(new File("LA.png"));
+            image = ImageUtilities.readMBF(new File("LA2.png"));
             FImage filtered = new FImage(image.getWidth(), image.getHeight());
             FImage redBand = image.getBand(0);
             FImage greenBand = image.getBand(1);
