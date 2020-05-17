@@ -25,9 +25,9 @@ public class App {
     	//Create an image
         MBFImage image = null;
         try {
-            image = ImageUtilities.readMBF(new File("easiestRoad.png"));
+            image = ImageUtilities.readMBF(new File("valbonne.png"));
             //image = ImageUtilities.readMBF(new File("img3.png"));
-            image = ImageUtilities.readMBF(new File("oslo.png"));
+            image = ImageUtilities.readMBF(new File("valbonne.png"));
             FImage filtered = new FImage(image.getWidth(), image.getHeight());
             FImage redBand = image.getBand(0);
             FImage greenBand = image.getBand(1);

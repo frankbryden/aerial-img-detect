@@ -1,4 +1,5 @@
 out/
 target/*
 output/
+.idea/
 distances
